@@ -23,7 +23,7 @@ mp.add_hook("on_load", 15, function()
     end
     local url = string.gsub(url,"^gallery%-dl://","",1)
 
-    local es, urls, result = exec({"gallery-dl", "-g", url})
+    local es, urls, result = exec({"gallery-dl", "-g", "--", url})
     if (es < 0) or (urls == nil) or (urls == "") then
         msg.error("failed to get album list.")
     end
