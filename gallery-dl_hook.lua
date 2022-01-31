@@ -17,11 +17,11 @@ end
 
 mp.add_hook("on_load", 15, function()
     local url = mp.get_property("stream-open-filename", "")
-    if (url:find("^gallery%-dl://") ~= 1) then
-        msg.debug("not a gallery-dl:// url: " .. url)
+    if (url:find("^gallery[-_]dl://") ~= 1) then
+        msg.debug("not a gallery-dl:// or gallery_dl:// url: " .. url)
         return
     end
-    local url = string.gsub(url,"^gallery%-dl://","",1)
+    local url = string.gsub(url,"^gallery[-_]dl://","",1)
 
     local es, urls, result = exec({"gallery-dl", "-g", "--", url})
     if (es < 0) or (urls == nil) or (urls == "") then
